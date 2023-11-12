@@ -7,11 +7,6 @@
     <meta property="og:description" content="不老松官方網站" />
 	<link rel="shortcut icon" href="/images/picture/icon_young.jpg" type="image/x-icon">
 	<link rel="icon" href="/images/picture/icon_young.jpg" type="image/x-icon">
-	<link href="/css/bootstrap.css" rel="stylesheet">
-	<link href="/css/style.css" rel="stylesheet">
-	<link href="/css/responsive.css" rel="stylesheet">
-	<link href="/css/responsive-2.css" rel="stylesheet">
-	<link href="/css/base.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
