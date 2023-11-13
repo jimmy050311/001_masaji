@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//登入
+Route::prefix('/login')->group(function() {
+    Route::post('/', [\App\Http\Controllers\Backend\LoginController::class, 'login']);
+});
+//登出
+Route::prefix('/logout')->group(function() {
+    Route::post('/', [\App\Http\Controllers\Backend\LoginController::class, 'logout']);
+});
+
 //管理員
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Admin\AdminController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\Admin\AdminController::class, 'store']);
     Route::get('/{id}', [\App\Http\Controllers\Backend\Admin\AdminController::class, 'show']);
@@ -23,33 +32,34 @@ Route::prefix('admin')->group(function() {
 });
 
 //會員
-Route::prefix('user')->group(function() {
+Route::prefix('user')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\User\UserController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\User\UserController::class, 'store']);
     Route::get('/{id}', [\App\Http\Controllers\Backend\User\UserController::class, 'show']);
     Route::put('/{id}', [\App\Http\Controllers\Backend\User\UserController::class, 'update']);
     Route::put('/update-password/{id}', [\App\Http\Controllers\Backend\User\UserController::class, 'updatePassword']);
+    Route::get('/get/obtain', [\App\Http\Controllers\Backend\User\UserController::class, 'obtain']);
 });
 
 //等級
-Route::prefix('level')->group(function() {
+Route::prefix('level')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\User\LevelController::class, 'index']);
 });
 
 //點數
-Route::prefix('point')->group(function() {
+Route::prefix('point')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\User\PointController::class, 'index']);
     Route::get('/{id}', [\App\Http\Controllers\Backend\User\PointController::class, 'show']);
     Route::put('/{id}', [\App\Http\Controllers\Backend\User\PointController::class, 'update']);
 });
 
 //點數log
-Route::prefix('point-log')->group(function() {
+Route::prefix('point-log')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\User\PointLogController::class, 'index']);
 });
 
 //商品類別
-Route::prefix('category')->group(function() {
+Route::prefix('category')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Product\CategoryController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\Product\CategoryController::class, 'store']);
     Route::get('/{id}', [\App\Http\Controllers\Backend\Product\CategoryController::class, 'show']);
@@ -58,7 +68,7 @@ Route::prefix('category')->group(function() {
 });
 
 //商品
-Route::prefix('product')->group(function() {
+Route::prefix('product')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Product\ProductController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\Product\ProductController::class, 'store']);
     Route::get('/{id}', [\App\Http\Controllers\Backend\Product\ProductController::class, 'show']);
@@ -68,23 +78,33 @@ Route::prefix('product')->group(function() {
 });
 
 //庫存
-Route::prefix('inventory')->group(function() {
+Route::prefix('inventory')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Inventory\InventoryController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\Inventory\InventoryController::class, 'store']);
 });
 
 //活動
-Route::prefix('event')->group(function() {
+Route::prefix('event')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Event\EventController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\Event\EventController::class, 'store']);
-    Route::get('/{id}', [App\Http\Controllers\Backend\Event\EventController::class, 'show']);
-    Route::put('/{id}', [App\Http\Controllers\Backend\Event\EventController::class, 'update']);
+    Route::get('/{id}', [\App\Http\Controllers\Backend\Event\EventController::class, 'show']);
+    Route::put('/{id}', [\App\Http\Controllers\Backend\Event\EventController::class, 'update']);
+    Route::get('/get/obtain', [\App\Http\Controllers\Backend\Event\EventController::class, 'obtain']);
 });
 
 //優惠券
-Route::prefix('coupon')->group(function() {
+Route::prefix('coupon')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Coupon\CouponController::class, 'index']);
     Route::post('/', [\App\Http\Controllers\Backend\Coupon\CouponController::class, 'store']);
-    Route::get('/{id}', [App\Http\Controllers\Backend\Coupon\CouponController::class, 'show']);
-    Route::put('/{id}', [App\Http\Controllers\Backend\Coupon\CouponController::class, 'update']);
+    Route::get('/{id}', [\App\Http\Controllers\Backend\Coupon\CouponController::class, 'show']);
+    Route::put('/{id}', [\App\Http\Controllers\Backend\Coupon\CouponController::class, 'update']);
+    Route::get('/get/obtain', [\App\Http\Controllers\Backend\Coupon\CouponController::class, 'obtain']);
+});
+
+//訂單
+Route::prefix('order')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
+    Route::get('/', [\App\Http\Controllers\Backend\Order\OrderController::class, 'index']);
+    Route::post('/', [\App\Http\Controllers\Backend\Order\OrderController::class, 'store']);
+    Route::get('/{id}', [\App\Http\Controllers\Backend\Order\OrderController::class, 'show']);
+    Route::put('/{id}', [\App\Http\Controllers\Backend\Order\OrderController::class, 'update']);
 });

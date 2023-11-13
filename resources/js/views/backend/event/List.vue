@@ -56,17 +56,17 @@
         </panel>
 	    	<panel>
 	    		<panel-body>
-                    <n-data-table
-                      size="small"
-                      :columns="columns" 
-                      :data="tableData"
-                      scroll-x="1100"
-                      striped
-                      :bordered="false"
-                      :single-line="false"
-                      @update:sorter="handleSorterChange"
-                    />
-                    <n-pagination class="mt-4 justify-content-center" v-model:page="currentPage" :page-count="page" />
+            <n-data-table
+              size="small"
+              :columns="columns" 
+              :data="tableData"
+              scroll-x="1100"
+              striped
+              :bordered="false"
+              :single-line="false"
+              @update:sorter="handleSorterChange"
+            />
+            <n-pagination class="mt-4 justify-content-center" v-model:page="currentPage" :page-count="page" />
 	    		</panel-body>
 		</panel>
 		<!-- END panel -->

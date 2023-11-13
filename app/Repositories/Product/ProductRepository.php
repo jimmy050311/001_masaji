@@ -37,6 +37,9 @@ class ProductRepository extends Repository implements ProductInterface
         if (isset($params['type']) && !is_null($params['type'])) {
             $query = $query->where($this->module()->getTable() . '.type', (int) $params['type']);
         }
+        if (isset($params['category_id']) && !is_null($params['category_id'])) {
+            $query = $query->where($this->module()->getTable() . '.category_id', (int) $params['category_id']);
+        }
         if (isset($params['start_date']) && !is_null($params['start_date'])) {
             $query = $query->where($this->module()->getTable() . '.created_at', '>=', Carbon::parse($params['start_date']));
         }

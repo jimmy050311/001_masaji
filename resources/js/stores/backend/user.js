@@ -5,6 +5,7 @@ import {
     getUserDetailFunc, 
     editUserFunc,
     editUserPasswordFunc,
+    obtainUserFunc,
 } from "@/api/api.js";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { alert,loading } from '@/swal/default.js'
@@ -50,6 +51,8 @@ export const useUserStore = defineStore("user", {
                     title: '錯誤',
                     text: error.response.message,
                 })
+                
+                return false
             }
         },
         async fetchUserDetail(id) {
@@ -85,6 +88,20 @@ export const useUserStore = defineStore("user", {
                 })
 
                 return false
+            }
+        },
+        async fetchObtainUser(data) {
+            try {
+
+                const response = await obtainUserFunc(data)
+
+                return response.data
+            }catch(error) {
+                await Swal.fire({
+                    icon: 'error',
+                    title: '錯誤',
+                    text: error.response.message,
+                })
             }
         },
         async fetchEditUserPassword(id, data) {

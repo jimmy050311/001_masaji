@@ -104,4 +104,26 @@ class CouponController extends Controller
 
         return response()->json($response, $response['success']);
     }
+
+    public function obtain(Request $request): JsonResponse
+    {
+        try {
+
+            $data = $this->service->obtain($request->all());
+            
+            $response = [
+                'success' => 200,
+                'message' => '成功',
+                'data' => CouponResource::collection($data)
+            ];
+
+        }catch(Exception $e) {
+            $response = [
+                'success' => 400,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($response, $response['success']);
+    }
 }

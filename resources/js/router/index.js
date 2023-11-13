@@ -4,6 +4,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: "/manage/login",
+      name: "login",
+      component: () => import("../views/backend/LoginPage.vue")
+    },
+    {
       path: "/manage/pos",
       name: "pos",
       component: () => import("../views/backend/Pos.vue")
@@ -108,6 +113,16 @@ const router = createRouter({
       name: "coupon-edit",
       component: () => import("../views/backend/coupon/Edit.vue")
     },
+    {
+      path: "/manage/order/list",
+      name: "order-list",
+      component: () => import("../views/backend/order/List.vue")
+    },
+    {
+      path: "/manage/order/edit/:id",
+      name: "order-edit",
+      component: () => import("../views/backend/order/Edit.vue")
+    }
   ],
 });
 

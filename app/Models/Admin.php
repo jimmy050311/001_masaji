@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\AuthenticatableModel;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Admin extends Model
+class Admin extends AuthenticatableModel implements JWTSubject
 {
     use HasFactory;
 
@@ -14,4 +18,12 @@ class Admin extends Model
     protected $guarded = [
         'password_confirmation'
     ];
+
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims() {
+        return ['role' => 'admins'];
+    }
 }

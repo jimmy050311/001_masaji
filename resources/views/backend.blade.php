@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="/assets2/img/logo/icon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="/assets2/img/logo/icon.png">
     <script src="/ckeditor/ckeditor.js"></script>
-    <title>G-POS</title>
+    <title>不老松</title>
     <link href="/assets/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" />
     <!-- <script src="/assets/plugins/jstree/dist/jstree.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>

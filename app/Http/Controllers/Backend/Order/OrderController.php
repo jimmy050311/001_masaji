@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Event;
+namespace App\Http\Controllers\Backend\Order;
 
-use App\Services\Event\EventService;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Exception;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EventRequest;
-use App\Http\Resources\EventResource;
+use App\Http\Resources\OrderResource;
+use App\Models\Order;
+use App\Services\Order\OrderService;
+use Illuminate\Http\JsonResponse;
+use Exception;
+use Illuminate\Http\Request;
 
-class EventController extends Controller
+class OrderController extends Controller
 {
     private $service;
 
-    public function __construct(EventService $service)
+    public function __construct(OrderService $service)
     {
         $this->service = $service;
     }
@@ -30,9 +30,9 @@ class EventController extends Controller
                 'success' => 200,
                 'message' => '成功',
                 'dataPage' => $dataPage,
-                'data' => EventResource::collection($data)
+                'data' => OrderResource::collection($data)
             ];
-        }catch(Exception $e) {
+        }catch(Exception $e){
             $response = [
                 'success' => 400,
                 'message' => $e->getMessage()
@@ -42,17 +42,16 @@ class EventController extends Controller
         return response()->json($response, $response['success']);
     }
 
-    public function store(EventRequest $request): JsonResponse
+    public function store(Request $request): JsonResponse
     {
         try {
-            
+
             $this->service->add($request->all());
 
             $response = [
                 'success' => 200,
-                'message' => '新增成功',
+                'message' => '訂單新增成功',
             ];
-            
         }catch(Exception $e) {
             $response = [
                 'success' => 400,
@@ -63,7 +62,7 @@ class EventController extends Controller
         return response()->json($response, $response['success']);
     }
 
-    public function show($id) 
+    public function show($id): JsonResponse
     {
         try {
 
@@ -72,10 +71,10 @@ class EventController extends Controller
             $response = [
                 'success' => 200,
                 'message' => '成功',
-                'data' => new EventResource($data)
+                'data' => new OrderResource($data),
             ];
 
-        }catch(Exception $e) {
+        }catch(Exception $e){
             $response = [
                 'success' => 400,
                 'message' => $e->getMessage()
@@ -85,42 +84,22 @@ class EventController extends Controller
         return response()->json($response, $response['success']);
     }
 
-    public function update(EventRequest $request, $id) 
+    public function update(Request $request, $id): JsonResponse
     {
         try {
-
+            
             $this->service->edit($id, $request->all());
 
             $response = [
                 'success' => 200,
                 'message' => '修改成功'
             ];
+
         }catch(Exception $e) {
             $response = [
                 'success' => 400,
                 'message' => $e->getMessage()
-            ];  
-        }
-
-        return response()->json($response, $response['success']);
-    }
-
-    public function obtain(Request $request): JsonResponse
-    {
-        try {
-
-            $data = $this->service->obtain($request->all());
-            
-            $response = [
-                'success' => 200,
-                'message' => '成功',
-                'data' => EventResource::collection($data)
-            ];
-        }catch(Exception $e) {
-            $response = [
-                'success' => 400,
-                'message' => $e->getMessage()
-            ];
+            ]; 
         }
 
         return response()->json($response, $response['success']);

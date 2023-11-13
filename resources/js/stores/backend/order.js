@@ -1,26 +1,25 @@
 import { defineStore } from "pinia";
 import { 
-    getEventFunc,
-    createEventFunc,
-    getEventDetailFunc,
-    editEventFunc,
-    obtainEventFunc,
+    getOrderFunc,
+    createOrderFunc,
+    getOrderDetailFunc,
+    editOrderFunc,
 } from "@/api/api.js";
-import Swal from "sweetalert2/dist/sweetalert2.js";
+import Swal from "sweetalert2/dist/sweetalert2.js"
 import { alert,loading } from '@/swal/default.js'
 
-export const useEventStore = defineStore("event", {
+export const useOrderStore = defineStore("order", {
     state: () => {
         return {
-            eventData: [],
+            orderData: []
         }
     },
     actions: {
-        async fetchEvent(page, data) {
+        async fetchOrder(page, data) {
             try {
 
-                const response = await getEventFunc(page, data)
-                this.eventData = response
+                const response = await getOrderFunc(page, data)
+                this.orderData = response
 
             }catch(error) {
                 await Swal.fire({
@@ -30,11 +29,11 @@ export const useEventStore = defineStore("event", {
                 })
             }
         },
-        async fetchCreateEvent(data) {
+        async fetchCreateOrder(data) {
             try {
 
                 loading().growSpinner.fire({})
-                const response = await createEventFunc(data)
+                const response = await createOrderFunc(data)
 
                 await Swal.fire({
                     icon: 'success',
@@ -53,26 +52,24 @@ export const useEventStore = defineStore("event", {
                 return false
             }
         },
-        async fetchEventDetail(id) {
+        async fetchOrderDetail(id) {
             try {
 
-                loading().growSpinner.fire({})
-                const response = await getEventDetailFunc(id)
-                await loading().growSpinner.close({})
-
+                const response = await getOrderDetailFunc(id)
                 return response.data
+
             }catch(error) {
                 await Swal.fire({
                     icon: 'error',
                     title: '錯誤',
-                    text: error.response.message,
+                    text: error.response.data.message,
                 })
             }
         },
-        async fetchEditEvent(id, data) {
+        async fetchEditOrder(id, data) {
             try {
 
-                const response = await editEventFunc(id, data)
+                const response = await editOrderFunc(id, data)
                 await Swal.fire({
                     icon: 'success',
                     title: '成功',
@@ -88,22 +85,6 @@ export const useEventStore = defineStore("event", {
                 })
 
                 return false
-            }
-        },
-        async fetchObtainEvent(data) {
-            try {
-
-                loading().growSpinner.fire({})
-                const response = await obtainEventFunc(data)
-                await loading().growSpinner.close({})
-                
-                return response.data
-            }catch(error) {
-                await Swal.fire({
-                    icon: 'error',
-                    title: '錯誤',
-                    text: error.response.message,
-                })
             }
         }
     }

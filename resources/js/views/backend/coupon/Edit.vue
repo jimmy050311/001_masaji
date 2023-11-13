@@ -158,7 +158,7 @@
             code: couponData.code,
         }
 
-        couponStore.fetchEditCoupon(eventId.value, data).then((response) => {
+        couponStore.fetchEditCoupon(couponId.value, data).then((response) => {
             if(response) {
                 router.push({ name: 'coupon-list', params: {} })
             }

@@ -4,7 +4,12 @@ import { useAppOptionStore } from '@/stores/app-option';
 import { RouterLink } from 'vue-router';
 import { slideToggle } from '@/composables/slideToggle.js';
 import AppHeaderMegaMenu from '@/components/app/HeaderMegaMenu.vue';
+import { useLoginStore } from '@/stores/backend/login.js'
+import { useRouter } from "vue-router"
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
+const router = useRouter();
+const loginStore = useLoginStore();
 const appOption = useAppOptionStore();
 const notificationData = [{
 	icon: 'fa fa-bug media-object bg-gray-500',
@@ -79,6 +84,23 @@ function checkForm(event) {
 	this.$router.push({ path: '/extra/search' })
 };
 
+function logout() {
+	loginStore.fetchLogout().then((response) => {
+        Swal.fire({
+            title: '登出成功',
+            icon: 'success',
+            confirmButtonText: '確定',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+				//window.location.reload()
+                //router.push({ name: 'login' })
+				window.location.href = "/manage/login"
+            }
+        })
+    })
+}
+
 onMounted(() => {
 	handleWindowResize();
 });
@@ -94,7 +116,7 @@ onMounted(() => {
 				<span class="icon-bar"></span>
 			</button>
 			<RouterLink to="/" class="navbar-brand">
-				<span class="navbar-logo"></span> <b>G-POS</b>
+				<img src="/images/picture/icon_young.jpg"/>&nbsp;<b>不老松</b>
 			</RouterLink>
 			<button type="button" class="navbar-mobile-toggler" data-bs-toggle="collapse" data-bs-target="#top-navbar" v-if="appOption.appMegaMenu && !appOption.appSidebarTwo">
 				<span class="fa-stack fa-lg">
@@ -195,7 +217,7 @@ onMounted(() => {
 					<a href="javascript:;" class="dropdown-item">Calendar</a>
 					<a href="javascript:;" class="dropdown-item">Settings</a>
 					<div class="dropdown-divider"></div> -->
-					<a href="javascript:;" class="dropdown-item">登出</a>
+					<a href="javascript:;" class="dropdown-item" @click="logout()">登出</a>
 				</div>
 			</div>
 			<div class="navbar-divider d-none d-md-block" v-if="appOption.appSidebarTwo"></div>

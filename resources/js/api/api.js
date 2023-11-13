@@ -71,6 +71,7 @@ export const createUserFunc = (data) => request.post(`/api/user`, data)
 export const getUserDetailFunc = (id) => request.get(`/api/user/${id}`)
 export const editUserFunc = (id, data) => request.put(`/api/user/${id}`, data)
 export const editUserPasswordFunc = (id, data) => request.put(`/api/user/update-password/${id}`, data)
+export const obtainUserFunc = (data) => request.get(`/api/user/get/obtain`, data)
 
 //會員等級
 export const obtainLevelFunc = (data) => request.get(`/api/level`, data)
@@ -107,11 +108,17 @@ export const getEventFunc = (page, data) => request.get(`/api/event?page=${page}
 export const createEventFunc = (data) => request.post(`/api/event`, data)
 export const getEventDetailFunc = (id) => request.get(`/api/event/${id}`)
 export const editEventFunc = (id, data) => request.put(`/api/event/${id}`, data)
+export const obtainEventFunc = (data) => request.get(`/api/event/get/obtain`, data)
 
 //優惠券
 export const getCouponFunc = (page, data) => request.get(`/api/coupon?page=${page}`, data)
 export const createCouponFunc = (data) => request.post(`/api/coupon`, data)
 export const getCouponDetailFunc = (id) => request.get(`/api/coupon/${id}`)
 export const editCouponFunc = (id, data) => request.put(`/api/coupon/${id}`, data)
+export const obtainCouponFunc = (data) => request.get(`/api/coupon/get/obtain`, data)
 
-
+//訂單
+export const getOrderFunc = (page, data) => request.get(`/api/order?page=${page}`, data)
+export const createOrderFunc = (data) => request.post(`/api/order`, data)
+export const getOrderDetailFunc = (id) => request.get(`/api/order/${id}`)
+export const editOrderFunc = (id, data) => request.put(`/api/order/${id}`, data)

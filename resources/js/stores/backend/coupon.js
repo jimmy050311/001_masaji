@@ -4,6 +4,7 @@ import {
     createCouponFunc,
     getCouponDetailFunc,
     editCouponFunc,
+    obtainCouponFunc,
 } from "@/api/api.js";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { alert,loading } from '@/swal/default.js'
@@ -87,6 +88,20 @@ export const useCouponStore = defineStore("coupon", {
                 })
 
                 return false
+            }
+        },
+        async fetchObtainCoupon(data) {
+            try {
+
+                const response = await obtainCouponFunc(data)
+
+                return response.data
+            }catch(error) {
+                await Swal.fire({
+                    icon: 'error',
+                    title: '錯誤',
+                    text: error.response.message,
+                })
             }
         }
     }

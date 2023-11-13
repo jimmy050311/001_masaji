@@ -41,7 +41,11 @@ Route::get('/member', function() {
 });
 
 //後台
+
 Route::prefix('/manage')->group(function() {
+    Route::get('/login', function() {
+        return view('backend');
+    });
     Route::get('/pos', function() {
         return view('backend');
     });
@@ -108,6 +112,14 @@ Route::prefix('/manage')->group(function() {
         Route::get('/create', function() {
             return view('backend');
         });
+        Route::get('/list', function() {
+            return view('backend');
+        });
+        Route::get('/edit/{id}', function() {
+            return view('backend');
+        });
+    });
+    Route::prefix('order')->group(function() {
         Route::get('/list', function() {
             return view('backend');
         });
