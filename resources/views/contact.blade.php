@@ -24,37 +24,37 @@
 
         <!-- section begin -->
         <section>
-            <div class="container">
+            <div class="container" id="contactView">
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
-                        <form name="contactForm" id='contact_form' class="form-border" method="post">
+                        <div name="contactForm" id='contact_form' class="form-border" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div id='name_error' class='error'>Please enter your name.</div>
                                     <div>
-                                        <input type='text' name='Name' id='name' class="form-control" placeholder="請輸入名稱" required>
+                                        <input type='text' name='Name' id='name' v-model="name" class="form-control" placeholder="請輸入名稱" required>
                                     </div>
 
                                     <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                     <div>
-                                        <input type='email' name='Email' id='email' class="form-control" placeholder="請輸入信箱" required>
+                                        <input type='email' name='Email' id='email' v-model="email" class="form-control" placeholder="請輸入信箱" required>
                                     </div>
 
                                     <div id='phone_error' class='error'>Please enter your phone number.</div>
                                     <div>
-                                        <input type='text' name='phone' id='phone' class="form-control" placeholder="請輸入電話號碼" required>
+                                        <input type='text' name='phone' id='phone' v-model="phone" class="form-control" placeholder="請輸入電話號碼" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div id='message_error' class='error'>Please enter your message.</div>
                                     <div>
-                                        <textarea name='message' id='message' class="form-control" placeholder="請輸入您要提問的訊息" required></textarea>
+                                        <textarea name='message' id='message' v-model="content" class="form-control" placeholder="請輸入您要提問的訊息" required></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div>
-                                    <p id='submit' class="mt20">
+                                    <p id='submit' class="mt20" @click="fetchCreateContact()">
                                         <input type='submit' id='send_message' value='提交' class="btn btn-main">
                                     </p>
                                     <div id='mail_success' class='success'>Your message has been sent successfully.</div>
@@ -62,7 +62,7 @@
                                     
                                 </div>
                             </div>
-                        </form>
+                        </div>
 
                         <div id="success_message" class='success'>
                             Your message has been sent successfully. Refresh this page if you want to send more messages.
@@ -104,4 +104,53 @@
     </div>
     <!-- content close -->
 
+    <script>
+        
+        new Vue({
+			el: '#contactView',
+			data: {
+				name: '',
+				title: '',
+				content: '',
+				phone: '',
+				email: '',
+			},
+			mounted() {
+				
+			},
+			methods: {
+				fetchCreateContact() {
+
+					const data = {
+						name: this.name,
+						content: this.content,
+						phone: this.phone,
+						email: this.email,
+					}
+
+					axios.post('/api/front/contact', data).then((response) => {
+
+						this.name = ""
+						this.content = ""
+						this.phone = ""
+						this.email = ""
+						
+						Swal.fire({
+                		    icon: 'success',
+                		    title: '<span style="color:black">成功</span>',
+                		    text: response.data.message,
+                		})
+
+					}).catch((error) => {
+						Swal.fire({
+                		    icon: 'error',
+                		    title: '<span style="color:black">錯誤</span>',
+                		    text: error.response.data.message,
+                		})
+					}) 
+				}
+			},
+		})
+
+    </script>
 @endsection

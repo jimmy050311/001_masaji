@@ -122,7 +122,12 @@ const router = createRouter({
       path: "/manage/order/edit/:id",
       name: "order-edit",
       component: () => import("../views/backend/order/Edit.vue")
-    }
+    },
+    {
+      path: "/manage/order/chart",
+      name: "order-chart",
+      component: () => import("../views/backend/chart/Chart.vue")
+    },
   ],
 });
 

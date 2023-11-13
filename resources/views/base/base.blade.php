@@ -35,7 +35,7 @@
                                     <!-- <li><a href="reservation.html">Reservation</a></li> -->
                                     <li><a href="/news">最新消息</a></li>
                                     <li><a href="/gallery">相簿</a></li>
-                                    <li><a href="/contact">關於我們</a></li>
+                                    <li><a href="/contact">聯絡我們</a></li>
                                 </ul>
                                 <!-- mainmenu -->
                             </div>

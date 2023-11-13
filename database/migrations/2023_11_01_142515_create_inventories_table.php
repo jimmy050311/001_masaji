@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_id')->comment('產品id');
-            $table->bigInteger('admin_id')->comment('管理員id');
+            $table->bigInteger('admin_id')->nullable()->comment('管理員id');
             $table->string('number')->comment('異動單號');
             $table->tinyInteger('type')->comment('1=>進貨, 2=>入倉, 3=>出倉, 4=>銷售, 99=>退單');
             $table->integer('before_quantity')->comment('異動前數量');

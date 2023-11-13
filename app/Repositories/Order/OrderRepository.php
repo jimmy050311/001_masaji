@@ -56,4 +56,21 @@ class OrderRepository extends Repository implements OrderInterface
 
         return $query;
     }
+
+    public function orderTotal()
+    {
+        $sum = $this->module()->query()->sum('final_total');
+
+        return $sum;
+    }
+
+    public function calculate($val)
+    {
+        $sum = $this->module()->query()
+            ->where('created_at', '>=', Carbon::now()->startOfMonth()->addMonths($val))
+            ->where('created_at', '<=', Carbon::now()->startOfMonth()->addMonths($val)->endOfMonth())
+            ->sum('final_total');
+        
+        return (int)$sum;
+    }
 }

@@ -241,7 +241,8 @@
         })
         const productData = {
             params: {
-              paginate: 3
+              paginate: 6,
+              status: 1,
             }
         }
         productStore.fetchProduct(currentPage.value, productData)

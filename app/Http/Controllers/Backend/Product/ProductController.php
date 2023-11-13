@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function index(Request $request): JsonResponse
     {
         try {
-            
+           
             $data = $this->service->searchAll($request->all());
 			$dataPage = (int)$this->service->total($request->paginate);
             

@@ -126,5 +126,8 @@ Route::prefix('/manage')->group(function() {
         Route::get('/edit/{id}', function() {
             return view('backend');
         });
+        Route::get('/chart', function() {
+            return view('backend');
+        });
     });
 });

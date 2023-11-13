@@ -108,3 +108,20 @@ Route::prefix('order')->middleware(['assign.guard:admins', 'auth.admin.verified'
     Route::get('/{id}', [\App\Http\Controllers\Backend\Order\OrderController::class, 'show']);
     Route::put('/{id}', [\App\Http\Controllers\Backend\Order\OrderController::class, 'update']);
 });
+
+//圖表
+Route::prefix('chart')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
+    Route::get('/bar-chart', [\App\Http\Controllers\Backend\Chart\ChartController::class, 'barChart']);
+    Route::get('/pie-chart', [\App\Http\Controllers\Backend\Chart\ChartController::class, 'pieChart']);
+});
+
+
+//==============================================前台======================================================
+
+
+//聯絡我們
+Route::prefix('front')->group(function() {
+    Route::prefix('contact')->group(function() {
+        Route::post('/', [\App\Http\Controllers\Frontend\Contact\ContactController::class, 'store']);
+    });
+});

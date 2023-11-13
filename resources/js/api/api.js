@@ -122,3 +122,7 @@ export const getOrderFunc = (page, data) => request.get(`/api/order?page=${page}
 export const createOrderFunc = (data) => request.post(`/api/order`, data)
 export const getOrderDetailFunc = (id) => request.get(`/api/order/${id}`)
 export const editOrderFunc = (id, data) => request.put(`/api/order/${id}`, data)
+
+//圖表
+export const getBarChartFunc = (data) => request.get(`/api/chart/bar-chart`, data)
+export const getPieChartFunc = (data) => request.get(`/api/chart/pie-chart`, data)

@@ -18,4 +18,9 @@ class UserRepository extends Repository implements UserInterface
     {
         return $this->module()->where('account', $account)->first();
     }
+
+    public function userAmount()
+    {
+        return $this->module()->count();
+    }
 }

@@ -63,6 +63,11 @@ class UserService extends Service
         $this->repository->edit($id, $params);
     }
 
+    public function userAmount()
+    {
+        return $this->repository->userAmount();
+    }
+
     public function makeRefcode()
     {
         $str = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 
