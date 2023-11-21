@@ -126,3 +126,15 @@ export const editOrderFunc = (id, data) => request.put(`/api/order/${id}`, data)
 //圖表
 export const getBarChartFunc = (data) => request.get(`/api/chart/bar-chart`, data)
 export const getPieChartFunc = (data) => request.get(`/api/chart/pie-chart`, data)
+
+//聯絡我們
+export const getContactFunc = (page, data) => request.get(`/api/contact?page=${page}`, data)
+export const getContactDetailFunc = (id) => request.get(`/api/contact/${id}`)
+export const editContactFunc = (id, data) => request.put(`/api/contact/${id}`, data)
+
+//最新消息
+export const getNewsFunc = (page, data) => request.get(`/api/news?page=${page}`, data)
+export const createNewsFunc = (data) => request.post(`/api/news`, data)
+export const getNewsDetailFunc = (id) => request.get(`/api/news/${id}`)
+export const editNewsFunc = (id, data) => request.put(`/api/news/${id}`, data)
+export const deleteNewsFunc = (id) => request.delete(`/api/news/${id}`)

@@ -24,6 +24,9 @@ Route::get('/service', function() {
 Route::get('/news', function() {
     return view('news');
 });
+Route::get('/news/{id}', function() {
+    return view('news-detail');
+});
 Route::get('/gallery', function() {
     return view('gallery');
 });
@@ -39,9 +42,11 @@ Route::get('/manage', function() {
 Route::get('/member', function() {
     return view('member.member');
 });
+Route::get('/member/order/{id}', function() {
+    return view('member.order-detail');
+});
 
 //後台
-
 Route::prefix('/manage')->group(function() {
     Route::get('/login', function() {
         return view('backend');
@@ -127,6 +132,22 @@ Route::prefix('/manage')->group(function() {
             return view('backend');
         });
         Route::get('/chart', function() {
+            return view('backend');
+        });
+    });
+    Route::prefix('contact')->group(function() {
+        Route::get('/list', function() {
+            return view('backend');
+        });
+    });
+    Route::prefix('news')->group(function() {
+        Route::get('/list', function() {
+            return view('backend');
+        });
+        Route::get('/create', function() {
+            return view('backend');
+        });
+        Route::get('/edit/{id}', function() {
             return view('backend');
         });
     });

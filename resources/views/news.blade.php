@@ -22,122 +22,77 @@
 
         <!-- section begin -->
 		<section id="section-main">
-            <div class="container">
+            <div class="container" id="newsView">
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6" v-for="(item, index) in newsData">
                         <div class="d-items">
                            <div class="card-image-1 mod-b">
-                               <a href="blog-single.html" class="d-text">
+                               <a :href="/news/+item.id" class="d-text">
                                    <div class="d-inner">
-                                        <span class="atr-date">Dec 10, 2021</span>
-                                        <h3>This Will Fundamentally Change the Way You Look at Coffee</h3>
-                                        <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore adipisicing elit ex est adipisicing.</p>
-                                        <h5 class="d-tag">all about coffee</h5>
+                                        <span class="atr-date">@{{item.created_at}}</span>
+                                        <h3>@{{item.title}}</h3>
+                                        <p v-html="item.content"></p>
+                                        <h5 class="d-tag">youngsong</h5>
                                     </div>
                                </a>
-                               <img src="images/blog/1.jpg" class="img-fluid" alt="">
+                               <img :src="item.image" class="img-fluid" alt="">
                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-items">
-                           <div class="card-image-1 mod-b">
-                               <a href="blog-single.html" class="d-text">
-                                   <div class="d-inner">
-                                        <span class="atr-date">Dec 10, 2021</span>
-                                        <h3>7 Cult-Favorite Coffee Products You Should Know</h3>
-                                        <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore adipisicing elit ex est adipisicing.</p>
-                                        <h5 class="d-tag">all about coffee</h5>
-                                    </div>
-                               </a>
-                               <img src="images/blog/2.jpg" class="img-fluid" alt="">
-                           </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-items">
-                           <div class="card-image-1 mod-b">
-                               <a href="blog-single.html" class="d-text">
-                                   <div class="d-inner">
-                                        <span class="atr-date">Dec 10, 2021</span>
-                                        <h3>14 Unbelievable Things You Never Knew About Coffee</h3>
-                                        <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore adipisicing elit ex est adipisicing.</p>
-                                        <h5 class="d-tag">all about coffee</h5>
-                                    </div>
-                               </a>
-                               <img src="images/blog/3.jpg" class="img-fluid" alt="">
-                           </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-items">
-                           <div class="card-image-1 mod-b">
-                               <a href="blog-single.html" class="d-text">
-                                   <div class="d-inner">
-                                        <span class="atr-date">Dec 10, 2021</span>
-                                        <h3>The Best Type of Coffee for Every Zodiac Sign</h3>
-                                        <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore adipisicing elit ex est adipisicing.</p>
-                                        <h5 class="d-tag">all about coffee</h5>
-                                    </div>
-                               </a>
-                               <img src="images/blog/4.jpg" class="img-fluid" alt="">
-                           </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-items">
-                           <div class="card-image-1 mod-b">
-                               <a href="blog-single.html" class="d-text">
-                                   <div class="d-inner">
-                                        <span class="atr-date">Dec 10, 2021</span>
-                                        <h3>Some Feel-Good News About Coffee to Brighten Your Day</h3>
-                                        <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore adipisicing elit ex est adipisicing.</p>
-                                        <h5 class="d-tag">all about coffee</h5>
-                                    </div>
-                               </a>
-                               <img src="images/blog/5.jpg" class="img-fluid" alt="">
-                           </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-items">
-                           <div class="card-image-1 mod-b">
-                               <a href="blog-single.html" class="d-text">
-                                   <div class="d-inner">
-                                        <span class="atr-date">Dec 10, 2021</span>
-                                        <h3>The Most Underrated Coffee Products You Need to Know</h3>
-                                        <p>Quis cupidatat quis dolore amet aliquip ea exercitation labore proident dolore minim culpa ullamco aute eiusmod tempor anim nostrud quis officia dolore adipisicing elit ex est adipisicing.</p>
-                                        <h5 class="d-tag">all about coffee</h5>
-                                    </div>
-                               </a>
-                               <img src="images/blog/6.jpg" class="img-fluid" alt="">
-                           </div>
-                        </div>
-                    </div>
-
-                        
 
                     <div class="clearfix"></div>
                             
                     <nav aria-label="Page navigation example">
                       <ul class="pagination justify-content-center">
                         
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item" v-if="currentPage > 1" @click="search(currentPage-1)"><a class="page-link">@{{currentPage - 1}}</a></li>
+                        <li class="page-item active"><a class="page-link">@{{currentPage}}</a></li>
+                        <li class="page-item" v-if="currentPage < dataPage" @click="search(currentPage+1)"><a class="page-link">@{{currentPage + 1}}</a></li>
                         
                       </ul>
                     </nav>
-                        
                 </div>
              </div>
         </section>
 
     </div>
     <!-- content close -->
+
+    <script>
+        new Vue({
+            el: '#newsView',
+            data: {
+                dataPage: 1,
+                currentPage: 1,
+                newsData: [],
+            },
+            async mounted() {
+                this.fetchNews()
+            },
+            methods: {
+                fetchNews() {
+                    const data = {
+                        params: {
+                            status: 1,
+                            paginate: 9,
+                        }
+                    }
+                    axios.get(`/api/front/news?page=`+this.currentPage, data).then((response) => {
+                        this.dataPage = response.data.dataPage
+                        this.newsData = response.data.data
+                    })
+                },
+                search(val) {
+                    this.currentPage = val
+                }
+            },
+            watch: {
+                currentPage: function(val) {
+                    this.currentPage = val
+                    this.fetchNews()
+                }
+            }
+        })
+
+    </script>
 @endsection

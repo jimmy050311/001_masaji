@@ -9,7 +9,6 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Services\Product\ProductService;
 use Exception;
-use Nette\Utils\Json;
 
 class ProductController extends Controller
 {

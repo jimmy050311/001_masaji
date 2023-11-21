@@ -115,8 +115,8 @@ onMounted(() => {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<RouterLink to="/" class="navbar-brand">
-				<img src="/images/picture/icon_young.jpg"/>&nbsp;<b>不老松</b>
+			<RouterLink to="/manage/pos" class="navbar-brand">
+				<img src="/images/picture/icon_young.jpg"/>&nbsp;<b>GPOS</b>
 			</RouterLink>
 			<button type="button" class="navbar-mobile-toggler" data-bs-toggle="collapse" data-bs-target="#top-navbar" v-if="appOption.appMegaMenu && !appOption.appSidebarTwo">
 				<span class="fa-stack fa-lg">

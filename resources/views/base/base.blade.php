@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 @include('base.header')
+@include('base.loading')
 <body class="dark-scheme">
     <div id="wrapper">
         <div id="preloader">
@@ -11,13 +12,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="de-flex sm-pt10">
+                        <div class="de-flex sm-pt10" id="baseView">
                             <div class="de-flex-col">
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
                                         <a href="/">
-                                            <img alt="" src="images/logo.png" />
+                                            <img alt="" src="/images/logo.png" />
                                         </a>
                                     </div>
                                     <!-- logo close -->
@@ -40,8 +41,12 @@
                                 <!-- mainmenu -->
                             </div>
                             <div class="de-flex-col">
-                                <div class="menu_side_area">
+                                <div class="menu_side_area" v-if="access_token == null">
                                     <a href="/login" class="btn-main sm-hide">登入</a>
+                                    <span id="menu-btn"></span>
+                                </div>
+                                <div class="menu_side_area" v-if="access_token != null">
+                                    <a href="/member" class="btn-main sm-hide">會員中心</a>
                                     <span id="menu-btn"></span>
                                 </div>
                             </div>
@@ -64,7 +69,7 @@
                             <div class="de-flex">
                                 <div class="de-flex-col">
                                     <a href="/">
-                                        <img alt="" class="f-logo" src="images/logo.png" /><span class="copy">&copy; Copyright 2022 - Stradale by Designesia</span>
+                                        <img alt="" class="f-logo" src="/images/logo.png" /><span class="copy">&copy; Copyright 2022 - Stradale by Designesia</span>
                                     </a>
                                 </div>
                                 <div class="de-flex-col">
@@ -88,3 +93,13 @@
     @include('base.footer')
 </body>
 </html>
+<script>
+
+    new Vue({
+        el: '#baseView',
+        data: {
+            access_token: localStorage.getItem('access_token')
+        }
+    })
+
+</script>

@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Contact;
+namespace App\Http\Controllers\Backend\News;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactRequest;
-use App\Http\Resources\ContactResource;
-use App\Services\Contact\ContactService;
+use App\Http\Requests\NewsRequest;
+use App\Http\Resources\NewsResource;
+use App\Services\News\NewsService;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
-class ContactController extends Controller
+class NewsController extends Controller
 {
     private $service;
 
-    public function __construct(ContactService $service)
+    public function __construct(NewsService $service)
     {
         $this->service = $service;
     }
@@ -25,12 +25,12 @@ class ContactController extends Controller
 
             $data = $this->service->searchAll($request->all());
             $dataPage = (int)$this->service->total((int)$request->paginate);
-
+            
             $response = [
                 'success' => 200,
                 'message' => '成功',
                 'dataPage' => $dataPage,
-                'data' => ContactResource::collection($data)
+                'data' => NewsResource::collection($data)
             ];
 
         }catch(Exception $e) {
@@ -43,34 +43,15 @@ class ContactController extends Controller
         return response()->json($response, $response['success']);
     }
 
-    public function store(ContactRequest $request): JsonResponse
+    public function store(NewsRequest $request): JsonResponse
     {
         try {
-
+            
             $this->service->add($request->all());
+
             $response = [
                 'success' => 200,
-                'message' => '送出',
-            ];
-
-        }catch(Exception $e) {
-            $response = [
-                'success' => 400,
-                'message' => $e->getMessage()
-            ];
-        }
-
-        return response()->json($response, $response['success']);
-    }
-
-    public function update(Request $request, $id): JsonResponse
-    {
-        try {
-
-            $this->service->edit($id, $request->all());
-            $response = [
-                'success' => 200,
-                'message' => '修改成功'
+                'message' => '新增成功',
             ];
 
         }catch(Exception $e) {
@@ -91,9 +72,70 @@ class ContactController extends Controller
             $response = [
                 'success' => 200,
                 'message' => '成功',
-                'data' => new ContactResource($data)
+                'data' => new NewsResource($data)
             ];
 
+        }catch(Exception $e) {
+            $response = [
+                'success' => 400,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($response, $response['success']);
+    }
+
+    public function update(NewsRequest $request, $id): JsonResponse
+    {
+        try {
+            
+            $this->service->edit($id, $request->all());
+            $response = [
+                'success' => 200,
+                'message' => '修改成功'
+            ];
+
+        }catch(Exception $e) {
+            $response = [
+                'success' => 400,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($response, $response['success']);
+    }
+
+    public function destroy($id): JsonResponse
+    {
+        try {
+            
+            $this->service->del($id);
+            $response = [
+                'success' => 200,
+                'message' => '刪除成功'
+            ];
+
+        }catch(Exception $e) {
+            $response = [
+                'success' => 400,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($response, $response['success']);
+    }
+
+    public function obtain(Request $request): JsonResponse
+    {
+        try {
+
+            $data = $this->service->obtain($request->all());
+            $response = [
+                'success' => 200,
+                'message' => '成功',
+                'data' => NewsResource::collection($data),
+            ];
+            
         }catch(Exception $e) {
             $response = [
                 'success' => 400,

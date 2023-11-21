@@ -34,6 +34,9 @@ class OrderRepository extends Repository implements OrderInterface
                 $query->orWhere( $this->module()->getTable(). '.number', 'LIKE BINARY', "%$keyValue%");
             });
         }
+        if (isset($params['user_id']) && !is_null($params['user_id'])) {
+            $query = $query->where($this->module()->getTable() . '.user_id', (int) $params['user_id']);
+        }
         if (isset($params['status']) && !is_null($params['status'])) {
             $query = $query->where($this->module()->getTable() . '.status', (int) $params['status']);
         }

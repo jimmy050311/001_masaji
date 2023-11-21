@@ -20,13 +20,13 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- CSS Files
     ================================================== -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap" />
-    <link href="css/mdb.min.css" rel="stylesheet" type="text/css" id="mdb" />
-    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/coloring.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap" />
+    <link href="/css/mdb.min.css" rel="stylesheet" type="text/css" id="mdb" />
+    <link href="/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/coloring.css" rel="stylesheet" type="text/css" />
     <!-- color scheme -->
-    <link href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" id="colors" />
+    <link href="/css/colors/scheme-01.css" rel="stylesheet" type="text/css" id="colors" />
 
     @vite('resources/css/app.css')
 </head>

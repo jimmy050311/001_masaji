@@ -115,13 +115,61 @@ Route::prefix('chart')->middleware(['assign.guard:admins', 'auth.admin.verified'
     Route::get('/pie-chart', [\App\Http\Controllers\Backend\Chart\ChartController::class, 'pieChart']);
 });
 
+//聯絡我們
+Route::prefix('contact')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
+    Route::get('/', [\App\Http\Controllers\Backend\Contact\ContactController::class, 'index']);
+    Route::get('/{id}', [\App\Http\Controllers\Backend\Contact\ContactController::class, 'show']);
+    Route::put('/{id}', [\App\Http\Controllers\Backend\Contact\ContactController::class, 'update']);
+});
+
+//最新消息
+Route::prefix('news')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
+    Route::get('/', [\App\Http\Controllers\Backend\News\NewsController::class, 'index']);
+    Route::get('/{id}', [\App\Http\Controllers\Backend\News\NewsController::class, 'show']);
+    Route::post('/', [\App\Http\Controllers\Backend\News\NewsController::class, 'store']);
+    Route::put('/{id}', [\App\Http\Controllers\Backend\News\NewsController::class, 'update']);
+    Route::delete('/{id}', [\App\Http\Controllers\Backend\News\NewsController::class, 'destroy']);
+});
 
 //==============================================前台======================================================
 
 
-//聯絡我們
+
 Route::prefix('front')->group(function() {
+    //登入
+    Route::prefix('login')->group(function() {
+        Route::post('/', [\App\Http\Controllers\Frontend\LoginController::class, 'login']);
+    });
+    //登出
+    Route::prefix('logout')->group(function() {
+        Route::post('/', [\App\Http\Controllers\Frontend\LoginController::class, 'logout']);
+    });
+    //聯絡我們
     Route::prefix('contact')->group(function() {
         Route::post('/', [\App\Http\Controllers\Frontend\Contact\ContactController::class, 'store']);
+    });
+    //類別
+    Route::prefix('category')->group(function() {
+        Route::get('/', [\App\Http\Controllers\Frontend\Product\CategoryController::class, 'obtain']);
+    });
+    //產品
+    Route::prefix('product')->group(function() {
+        Route::get('/', [\App\Http\Controllers\Frontend\Product\ProductController::class, 'obtain']);
+    });
+    //最新消息
+    Route::prefix('news')->group(function() {
+        Route::get('/', [\App\Http\Controllers\Frontend\News\NewsController::class, 'index']);
+        Route::get('/{id}', [\App\Http\Controllers\Frontend\News\NewsController::class, 'show']);
+    });
+    //會員中心
+    //忘記密碼
+    Route::prefix('user')->group(function() {
+        Route::post('/', [\App\Http\Controllers\Frontend\User\UserController::class, 'show']);
+        Route::post('/update-password', [\App\Http\Controllers\Frontend\User\UserController::class, 'updatePassword']);
+    });
+    //購買紀錄
+    Route::prefix('order')->group(function() {
+        Route::post('/', [\App\Http\Controllers\Frontend\Order\OrderController::class, 'index']);
+        Route::post('/show', [\App\Http\Controllers\Frontend\Order\OrderController::class, 'show']);
     });
 });

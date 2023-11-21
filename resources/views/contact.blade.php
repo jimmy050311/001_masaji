@@ -78,7 +78,7 @@
         <!-- section close -->
 
         <section id="section-location" class="jarallax" aria-label="section">
-            <img class="jarallax-img" src="images/background/6.jpg" alt="" />
+            <img class="jarallax-img" src="/images/background/6.jpg" alt="" />
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 text-center text-light">

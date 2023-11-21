@@ -134,6 +134,25 @@ export const useAppSidebarMenuStore = defineStore({
                 },
             ]
 		},
+		{
+			url: "",
+            icon: "fa fa-lg fa-gear",
+            title: "前台管理",
+            children:[
+                {
+                    url: "/manage/contact/list",
+                    title: "聯絡我們列表",
+                },
+				{
+                    url: "/manage/news/create",
+                    title: "建立最新消息",
+                },
+				{
+                    url: "/manage/news/list",
+                    title: "最新消息列表",
+                },
+            ]
+		}
 	]
   }
 });

@@ -5,7 +5,7 @@
 		<div class="news-feed">
 			<div class="news-image" style="background-image: url(/images/picture/picture_10.jpg)"></div>
 			<div class="news-caption">
-				<h4 class="caption-title"><b>不老松</b> 後台系統</h4>
+				<h4 class="caption-title"><b>GPOS</b> 後台系統</h4>
 				<p>
 					
 				</p>
@@ -20,7 +20,7 @@
 				<div class="brand">
 					<div class="d-flex align-items-center">
 						<img src="/images/picture/icon_young.jpg" style="height:40px; margin-right:10px"/>
-						<b>不老松</b> 
+						<b>GPOS</b> 
 					</div>
 					<small>後台系統</small>
 				</div>

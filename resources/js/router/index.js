@@ -128,6 +128,26 @@ const router = createRouter({
       name: "order-chart",
       component: () => import("../views/backend/chart/Chart.vue")
     },
+    {
+      path: "/manage/contact/list",
+      name: "contact-list",
+      component: () => import("../views/backend/contact/List.vue")
+    },
+    {
+      path: "/manage/news/list",
+      name: "news-list",
+      component: () => import("../views/backend/news/List.vue")
+    },
+    {
+      path: "/manage/news/create",
+      name: "news-create",
+      component: () => import("../views/backend/news/Create.vue")
+    },
+    {
+      path: "/manage/news/edit/:id",
+      name: "news-edit",
+      component: () => import("../views/backend/news/Edit.vue")
+    },
   ],
 });
 

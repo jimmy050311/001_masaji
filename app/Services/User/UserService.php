@@ -68,6 +68,11 @@ class UserService extends Service
         return $this->repository->userAmount();
     }
 
+    public function getUserByAccount($account)
+    {
+        return $this->repository->getUserByAccount($account);
+    }
+
     public function makeRefcode()
     {
         $str = array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 

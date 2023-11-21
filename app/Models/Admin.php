@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends AuthenticatableModel implements JWTSubject
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'admins';
 
