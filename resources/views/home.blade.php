@@ -200,7 +200,7 @@
                     <div class="col-lg-4 offset-lg-1 text-center">
                         <div class="de-title">
                             <h5 class="s1 wow fadeInUp" data-wow-delay=".5s"><span class="id-color-2">Specials</span></h5>
-                            <h2 class="wow fadeInUp" data-wow-delay=".75s">Of The Day</h2>
+                            <h2 class="wow fadeInUp" data-wow-delay=".75s">不老松</h2>
                         </div>
                         <div class="wow fadeInUp" data-wow-delay="1s">
                             <h3> 足湯按摩 </h3>
