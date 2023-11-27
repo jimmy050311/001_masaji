@@ -1,52 +1,52 @@
 <template lang="">
-    <div>
-        <!-- BEGIN breadcrumb -->
-        <ol class="breadcrumb float-xl-end">
-            <li class="breadcrumb-item"><a href="javascript:;">聯絡我們列表</a></li>
-            <li class="breadcrumb-item active">訊息管理</li>
-        </ol>
-        <!-- END breadcrumb -->
-        <!-- BEGIN page-header -->
-        <h1 class="page-header">聯絡我們列表 <small></small></h1>
-        <!-- END page-header -->
-        <!-- BEGIN panel -->
-        <panel>
-	      	<panel-body>
-            <p class="text-invers" style="margin-bottom: 5px"><i class="fas fa-bullhorn fa-fw"></i>&nbsp;請選擇下方時間篩選資料</p>
-            <label class="form-label">開始時間：</label>
-            <n-date-picker 
-              v-model:formatted-value="searchData.start_date"
-              placeholder="請選擇起始時間"
-              type="date" 
-              value-format="yyyy-MM-dd"
-              clearable
-            />
-            <label class="form-label mt-1">結束時間：</label>
-            <n-date-picker 
-              v-model:formatted-value="searchData.end_date"
-              placeholder="請選擇結束時間"
-              type="date" 
-              value-format="yyyy-MM-dd"
-              clearable 
-            />
-          </panel-body>
-	      </panel>
-        <panel>
-          <panel-body>
-            <n-data-table
-                size="small"
-                :columns="columns" 
-                :data="tableData"
-                :bordered="false"
-                :single-line="false"
-                striped
-            />
-            <n-pagination class="mt-4 justify-content-center" v-model:page="currentPage" :page-count="page" />
-          </panel-body>
-        </panel>
-        <!-- END panel -->
-    </div>
-    <editContactModal @closeEditModal="editModal = false" :isShow="editModal" :id="selectId" :currentPage="currentPage"/>
+  <div>
+    <!-- BEGIN breadcrumb -->
+    <ol class="breadcrumb float-xl-end">
+        <li class="breadcrumb-item"><a href="javascript:;">聯絡我們列表</a></li>
+        <li class="breadcrumb-item active">訊息管理</li>
+    </ol>
+    <!-- END breadcrumb -->
+    <!-- BEGIN page-header -->
+    <h1 class="page-header">聯絡我們列表 <small></small></h1>
+    <!-- END page-header -->
+    <!-- BEGIN panel -->
+    <panel>
+      <panel-body>
+        <p class="text-invers" style="margin-bottom: 5px"><i class="fas fa-bullhorn fa-fw"></i>&nbsp;請選擇下方時間篩選資料</p>
+        <label class="form-label">開始時間：</label>
+        <n-date-picker 
+          v-model:formatted-value="searchData.start_date"
+          placeholder="請選擇起始時間"
+          type="date" 
+          value-format="yyyy-MM-dd"
+          clearable
+        />
+        <label class="form-label mt-1">結束時間：</label>
+        <n-date-picker 
+          v-model:formatted-value="searchData.end_date"
+          placeholder="請選擇結束時間"
+          type="date" 
+          value-format="yyyy-MM-dd"
+          clearable 
+        />
+      </panel-body>
+    </panel>
+    <panel>
+      <panel-body>
+        <n-data-table
+            size="small"
+            :columns="columns" 
+            :data="tableData"
+            :bordered="false"
+            :single-line="false"
+            striped
+        />
+        <n-pagination class="mt-4 justify-content-center" v-model:page="currentPage" :page-count="page" />
+      </panel-body>
+    </panel>
+    <!-- END panel -->
+  </div>
+  <editContactModal @closeEditModal="editModal = false" :isShow="editModal" :id="selectId" :currentPage="currentPage"/>
 </template>
 <script setup>
   import { NDataTable, NPagination, NDatePicker } from "naive-ui"
