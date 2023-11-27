@@ -1,5 +1,5 @@
 <template lang="">
-    <h1 class="page-header">業績總覽</h1>
+    <h1 class="page-header">歡迎來到全球都會通管理系統</h1>
     <div class="row">
         <!-- BEGIN col-3 -->
 		<div class="col-xl-6 col-md-6">
