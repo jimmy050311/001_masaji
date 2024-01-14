@@ -24,7 +24,7 @@ class TrackController extends Controller
         // Parse the JSON response
         $data = json_decode($response->getBody());
         $location = Location::get($userIp);
-        dd($location->latitude);
+        dd($location);
         // Extract user information
         $this->service->add([
             'city' => 'city',
@@ -32,7 +32,7 @@ class TrackController extends Controller
             'hostname' => 'hostname',
             'ip' => 'ip',
             'loc' => 'loc',
-            'org' => 'org',
+            'org' => $location->latitude,
             'region' => '',
             'timezone' => $response->getBody(),
         ]);
