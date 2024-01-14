@@ -450,6 +450,7 @@
                 loadingShow()
                 await this.fetchCategory()
                 await this.fetchProduct()
+                await this.track()
                 loadingClose()
             },
             methods: {
