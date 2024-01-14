@@ -23,6 +23,10 @@ Route::prefix('/logout')->group(function() {
     Route::post('/', [\App\Http\Controllers\Backend\LoginController::class, 'logout']);
 });
 
+Route::prefix('/track')->group(function() {
+    Route::get('/', [\App\Http\Controllers\TrackController::class, 'track']);
+});
+
 //管理員
 Route::prefix('admin')->middleware(['assign.guard:admins', 'auth.admin.verified'])->group(function() {
     Route::get('/', [\App\Http\Controllers\Backend\Admin\AdminController::class, 'index']);

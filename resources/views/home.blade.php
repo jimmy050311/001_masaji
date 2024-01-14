@@ -481,6 +481,14 @@
                 		})
   			        })
                 },
+                track() {
+                    const data = {
+                        params: {}
+                    }
+                    axios.get(`/api/track`,data).then((response) => {
+                        console.log(response)
+                    })
+                }
             }
         })
 
