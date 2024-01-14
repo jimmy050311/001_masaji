@@ -26,5 +26,7 @@ class TrackController extends Controller
             '$data' => $data,
             'userip'=> $userIp,
         ];
+
+        return response()->json($response, $response['success']);
     }
 }
