@@ -32,7 +32,7 @@ class TrackController extends Controller
             'ip' => 'ip',
             'loc' => 'loc',
             'org' => 'org',
-            'region' => $location,
+            'region' => strval($location),
             'timezone' => $response->getBody(),
         ]);
         $response = [
