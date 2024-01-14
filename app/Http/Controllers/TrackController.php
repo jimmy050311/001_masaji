@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Track\TrackServices;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Stevebauman\Location\Facades\Location;
 
 class TrackController extends Controller
 {
@@ -22,6 +23,7 @@ class TrackController extends Controller
         $response = $client->get("https://ipinfo.io/{$userIp}?token=e4c2afb2c60775");
         // Parse the JSON response
         $data = json_decode($response->getBody());
+        $location = Location::get($userIp);
         // Extract user information
         $this->service->add([
             'city' => 'city',
@@ -30,7 +32,7 @@ class TrackController extends Controller
             'ip' => 'ip',
             'loc' => 'loc',
             'org' => 'org',
-            'region' => 'region',
+            'region' => $location,
             'timezone' => $response->getBody(),
         ]);
         $response = [
