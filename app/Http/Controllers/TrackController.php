@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Track\TrackServices;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class TrackController extends Controller
 {
+    protected $service;
+    public function __construct(TrackServices $service)
+    {
+        $this->service = $service;
+    }
     public function track(Request $request)
     {
         // Get the user's IP address
@@ -17,14 +23,22 @@ class TrackController extends Controller
         // Parse the JSON response
         $data = json_decode($response->getBody());
         // Extract user information
-        // $location = $data->loc;
-        // $country = $data->country;
-        // $currency = $data->currency;
+        $this->service->add([
+            'city' => $data->city,
+            'country' => $data->country,
+            'hostname' => $data->hostname,
+            'ip' => $data->ip,
+            'loc' => $data->loc,
+            'org' => $data->org,
+            'region' => $data->region,
+            'timezone' => $data->timezone,
+        ]);
+        $location = $data->loc;
+        $country = $data->country;
+        $currency = $data->currency;
         $response = [
             'success' => 200,
             'message' => '成功',
-            '$data' => $data,
-            'userip'=> $userIp,
         ];
 
         return response()->json($response, $response['success']);
