@@ -24,16 +24,16 @@ class TrackController extends Controller
         $data = json_decode($response->getBody());
         dd($data);
         // Extract user information
-        $this->service->add([
-            'city' => 'city',
-            'country' => 'country',
-            'hostname' => 'hostname',
-            'ip' => 'ip',
-            'loc' => 'loc',
-            'org' => 'org',
-            'region' => 'region',
-            'timezone' => $data,
-        ]);
+        // $this->service->add([
+        //     'city' => 'city',
+        //     'country' => 'country',
+        //     'hostname' => 'hostname',
+        //     'ip' => 'ip',
+        //     'loc' => 'loc',
+        //     'org' => 'org',
+        //     'region' => 'region',
+        //     'timezone' => $data,
+        // ]);
         $response = [
             'success' => 200,
             'message' => '成功',
