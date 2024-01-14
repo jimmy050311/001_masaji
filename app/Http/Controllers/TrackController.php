@@ -22,7 +22,7 @@ class TrackController extends Controller
         $response = $client->get("https://ipinfo.io/{$userIp}?token=e4c2afb2c60775");
         // Parse the JSON response
         $data = json_decode($response->getBody());
-        dd($data);
+        dd($data->city);
         // Extract user information
         // $this->service->add([
         //     'city' => 'city',
