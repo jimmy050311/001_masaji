@@ -24,14 +24,14 @@ class TrackController extends Controller
         $data = json_decode($response->getBody());
         // Extract user information
         $this->service->add([
-            'city' => $data->city,
-            'country' => $data->country,
-            'hostname' => $data->hostname,
-            'ip' => $data->ip,
-            'loc' => $data->loc,
+            'city' => 'city',
+            'country' => 'country',
+            'hostname' => 'hostname',
+            'ip' => $userIp,
+            'loc' => 'loc',
             'org' => 'org',
-            'region' => $data->region,
-            'timezone' => $data->timezone,
+            'region' => 'region',
+            'timezone' => $data,
         ]);
         $response = [
             'success' => 200,
