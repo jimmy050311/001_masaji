@@ -13,7 +13,7 @@ class TrackController extends Controller
         $userIp = $request->ip();
         // Make a request to the ipinfo.io API
         $client = new Client();
-        $response = $client->get("https://ipinfo.io/{$userIp}?token=YOUR_API_KEY");
+        $response = $client->get("https://ipinfo.io/{$userIp}?token=e4c2afb2c60775");
         // Parse the JSON response
          $data = json_decode($response->getBody());
         // Extract user information
