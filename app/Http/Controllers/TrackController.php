@@ -33,9 +33,6 @@ class TrackController extends Controller
             'region' => $data->region,
             'timezone' => $data->timezone,
         ]);
-        $location = $data->loc;
-        $country = $data->country;
-        $currency = $data->currency;
         $response = [
             'success' => 200,
             'message' => '成功',
