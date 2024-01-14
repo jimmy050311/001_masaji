@@ -29,7 +29,7 @@ class TrackController extends Controller
             'hostname' => $data->hostname,
             'ip' => $data->ip,
             'loc' => $data->loc,
-            'org' => $data->org,
+            'org' => 'org',
             'region' => $data->region,
             'timezone' => $data->timezone,
         ]);
