@@ -27,7 +27,7 @@ class TrackController extends Controller
             'city' => 'city',
             'country' => 'country',
             'hostname' => 'hostname',
-            'ip' => $userIp,
+            'ip' => 'ip',
             'loc' => 'loc',
             'org' => 'org',
             'region' => 'region',
