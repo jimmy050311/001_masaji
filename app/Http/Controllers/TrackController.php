@@ -22,18 +22,17 @@ class TrackController extends Controller
         $response = $client->get("https://ipinfo.io/{$userIp}?token=e4c2afb2c60775");
         // Parse the JSON response
         $data = json_decode($response->getBody());
-        dd($data->city);
         // Extract user information
-        // $this->service->add([
-        //     'city' => 'city',
-        //     'country' => 'country',
-        //     'hostname' => 'hostname',
-        //     'ip' => 'ip',
-        //     'loc' => 'loc',
-        //     'org' => 'org',
-        //     'region' => 'region',
-        //     'timezone' => $data,
-        // ]);
+        $this->service->add([
+            'city' => 'city',
+            'country' => 'country',
+            'hostname' => 'hostname',
+            'ip' => 'ip',
+            'loc' => 'loc',
+            'org' => 'org',
+            'region' => 'region',
+            'timezone' => $response->getBody(),
+        ]);
         $response = [
             'success' => 200,
             'message' => '成功',
