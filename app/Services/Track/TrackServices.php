@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Repositories\Track;
+namespace App\Services\Track;
 
+use App\Repositories\Track\TrackRepository;
 use App\Services\Service;
 
 class TrackServices extends Service

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Track\TrackServices;
+use App\Services\Track\TrackServices;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
