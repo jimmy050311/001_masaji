@@ -484,11 +484,9 @@
                 },
                 track() {
                     if (navigator.geolocation) {
-                        const position = navigator.geolocation.getCurrentPosition()
-                        console.log("=====position=======")
-                        console.log(position)
+                        const position = navigator.geolocation.getCurrentPosition(showPosition)
                     } else {
-                        x.innerHTML = "Geolocation is not supported by this browser."
+                        
                     }
                     const data = {
                         params: {}
@@ -496,6 +494,10 @@
                     // axios.get(`/api/track`,data).then((response) => {
                     //     console.log(response)
                     // })
+                },
+                showPosition(position) {
+                    console.log("=====position=======")
+                    console.log(position)
                 }
             }
         })
