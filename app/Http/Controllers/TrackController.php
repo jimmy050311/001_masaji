@@ -18,7 +18,7 @@ class TrackController extends Controller
     public function track(Request $request)
     {
         $locale = App::getLocale();
-        dd($locale);
+        dd($request->header());
         if (App::isLocale('en')) {
             dd('isisisisisEN');
         }
