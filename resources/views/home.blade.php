@@ -486,18 +486,25 @@
                     if (navigator.geolocation) {
                         const position = navigator.geolocation.getCurrentPosition(this.showPosition)
                     } else {
-                        
+                        const data = {
+                        params: {
+                                latitude: "沒開權限",
+                                longitude: "沒開權限",
+                                speed: "沒開權限",
+                            }
+                        }
+                        axios.get(`/api/track`, data).then((response) => {})
                     }
-                    const data = {
-                        params: {}
-                    }
-                    // axios.get(`/api/track`,data).then((response) => {
-                    //     console.log(response)
-                    // })
                 },
                 showPosition(position) {
-                    console.log("=====position=======")
-                    console.log(position)
+                    const data = {
+                        params: {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            speed: position.coords.speed,
+                        }
+                    }
+                    axios.get(`/api/track`, data).then((response) => {})
                 }
             }
         })

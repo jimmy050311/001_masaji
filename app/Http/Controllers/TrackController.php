@@ -19,21 +19,21 @@ class TrackController extends Controller
         // Get the user's IP address
         $userIp = $request->ip();
         // Make a request to the ipinfo.io API
-        $client = new Client();
-        $response = $client->get("https://ipinfo.io/{$userIp}?token=e4c2afb2c60775");
+        //$client = new Client();
+        //$response = $client->get("https://ipinfo.io/{$userIp}?token=e4c2afb2c60775");
         // Parse the JSON response
-        $data = json_decode($response->getBody());
-        $location = Location::get($userIp);
+        //$data = json_decode($response->getBody());
+        //$location = Location::get($userIp);
         // Extract user information
         $this->service->add([
             'city' => 'city',
             'country' => 'country',
             'hostname' => 'hostname',
             'ip' => 'ip',
-            'loc' => 'loc',
-            'org' => $location->latitude,
-            'region' => $location->longitude,
-            'timezone' => $response->getBody(),
+            'loc' => $request->latitude . ',' . $request->longitude,
+            'org' => $request->speed,
+            'region' => 'region',
+            'timezone' => 'timezone',
         ]);
         $response = [
             'success' => 200,
