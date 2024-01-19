@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ko">
 @include('base.header')
 @include('base.loading')
 <body class="dark-scheme">
