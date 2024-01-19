@@ -483,12 +483,19 @@
   			        })
                 },
                 track() {
+                    if (navigator.geolocation) {
+                        const position = navigator.geolocation.getCurrentPosition()
+                        console.log("=====position=======")
+                        console.log(position)
+                    } else {
+                        x.innerHTML = "Geolocation is not supported by this browser."
+                    }
                     const data = {
                         params: {}
                     }
-                    axios.get(`/api/track`,data).then((response) => {
-                        console.log(response)
-                    })
+                    // axios.get(`/api/track`,data).then((response) => {
+                    //     console.log(response)
+                    // })
                 }
             }
         })
