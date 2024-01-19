@@ -448,6 +448,9 @@
             },
             async mounted() {
                 loadingShow()
+                var userLanguage = navigator.language || navigator.userLanguage;
+                console.log("=====lan======")
+                console.log(userLanguage)
                 await this.fetchCategory()
                 await this.fetchProduct()
                 await this.track()

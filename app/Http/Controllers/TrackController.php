@@ -17,11 +17,6 @@ class TrackController extends Controller
     }
     public function track(Request $request)
     {
-        $locale = App::getLocale();
-        dd($request->header());
-        if (App::isLocale('en')) {
-            dd('isisisisisEN');
-        }
         // Get the user's IP address
         $userIp = $request->ip();
         // Make a request to the ipinfo.io API
