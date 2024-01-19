@@ -484,7 +484,7 @@
                 },
                 track() {
                     if (navigator.geolocation) {
-                        const position = navigator.geolocation.getCurrentPosition(showPosition)
+                        const position = navigator.geolocation.getCurrentPosition(this.showPosition)
                     } else {
                         
                     }
