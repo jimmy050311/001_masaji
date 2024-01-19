@@ -449,8 +449,8 @@
             async mounted() {
                 Swal.fire({
                     icon: 'error',
-                    title: '<span style="color:black">地區語言錯誤請將手機設置於韓國</span>',
-                    text: error.response.data.message,
+                    title: '<span style="color:black">錯誤</span>',
+                    text: "地區語言錯誤請將手機設置於韓國",
                 }).then(() => {
                     loadingShow()
                 })
