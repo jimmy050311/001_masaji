@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Track\TrackServices;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Stevebauman\Location\Facades\Location;
 
 class TrackController extends Controller
@@ -16,6 +17,10 @@ class TrackController extends Controller
     }
     public function track(Request $request)
     {
+        $locale = App::getLocale();
+        if (App::isLocale('en')) {
+            dd('isisisisisEN');
+        }
         // Get the user's IP address
         $userIp = $request->ip();
         // Make a request to the ipinfo.io API
