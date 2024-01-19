@@ -447,14 +447,18 @@
                 newsData: [],
             },
             async mounted() {
-                loadingShow()
-                var userLanguage = navigator.userLanguage;
-                console.log("=====lan======")
-                console.log(userLanguage)
-                await this.fetchCategory()
-                await this.fetchProduct()
-                await this.track()
-                loadingClose()
+                Swal.fire({
+                    icon: 'error',
+                    title: '<span style="color:black">地區語言錯誤請將手機設置於韓國</span>',
+                    text: error.response.data.message,
+                }).then(() => {
+                    loadingShow()
+                })
+                //loadingShow()
+                // await this.fetchCategory()
+                // await this.fetchProduct()
+                // await this.track()
+                // loadingClose()
             },
             methods: {
                 fetchCategory() {
