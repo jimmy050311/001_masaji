@@ -447,18 +447,18 @@
                 newsData: [],
             },
             async mounted() {
-                Swal.fire({
-                    icon: 'error',
-                    title: '<span style="color:black">錯誤</span>',
-                    text: "地區語言錯誤請將手機設置於韓國",
-                }).then(() => {
-                    loadingShow()
-                })
-                //loadingShow()
-                // await this.fetchCategory()
-                // await this.fetchProduct()
-                // await this.track()
-                // loadingClose()
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: '<span style="color:black">錯誤</span>',
+                //     text: "地區語言錯誤請將手機設置於韓國",
+                // }).then(() => {
+                //     loadingShow()
+                // })
+                loadingShow()
+                await this.fetchCategory()
+                await this.fetchProduct()
+                await this.track()
+                loadingClose()
             },
             methods: {
                 fetchCategory() {
