@@ -448,7 +448,7 @@
             },
             async mounted() {
                 loadingShow()
-                var userLanguage = navigator.language || navigator.userLanguage;
+                var userLanguage = navigator.userLanguage;
                 console.log("=====lan======")
                 console.log(userLanguage)
                 await this.fetchCategory()
