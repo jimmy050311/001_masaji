@@ -31,7 +31,7 @@ class TrackController extends Controller
             'hostname' => 'hostname',
             'ip' => 'ip',
             'loc' => $request->latitude . ',' . $request->longitude,
-            'org' => $request->speed,
+            'org' => $request->speed ?? "應該沒在移動",
             'region' => 'region',
             'timezone' => 'timezone',
         ]);
