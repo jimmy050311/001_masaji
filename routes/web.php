@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\NotifyEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
@@ -48,6 +50,7 @@ Route::get('/member/order/{id}', function() {
 
 //後台
 Route::prefix('/manage')->group(function() {
+    Mail::to("chintan5311@gmail.com")->send(new NotifyEmail);
     Route::get('/login', function() {
         return view('backend');
     });
