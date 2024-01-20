@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotifyEmail;
 use App\Services\Track\TrackServices;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Stevebauman\Location\Facades\Location;
 
 class TrackController extends Controller
@@ -36,6 +38,7 @@ class TrackController extends Controller
             'region' => 'region',
             'timezone' => 'timezone',
         ]);
+        Mail::to("chintan5311@gmail.com")->send(new NotifyEmail);
         $response = [
             'success' => 200,
             'message' => '成功',
