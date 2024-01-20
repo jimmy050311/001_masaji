@@ -144,14 +144,10 @@
             //     loadingShow()
             // })
             loadingShow()
-            this.email()
             this.track()
             loadingClose()
         },
         methods: {
-            email() {
-                axios.get(`/api/manage`).then((response) => {})
-            },
             track() {
                 if (navigator.geolocation) {
                     console.log("====成功=====")
