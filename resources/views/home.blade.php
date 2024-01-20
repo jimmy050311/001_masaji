@@ -144,7 +144,8 @@
             //     loadingShow()
             // })
             loadingShow()
-            await this.track()
+            this.email()
+            this.track()
             loadingClose()
         },
         methods: {
