@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\NotifyEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::prefix('/manage')->group(function() {
+    Mail::to("chintan5311@gmail.com")->send(new NotifyEmail);
+});
 //登入
 Route::prefix('/login')->group(function() {
     Route::post('/', [\App\Http\Controllers\Backend\LoginController::class, 'login']);

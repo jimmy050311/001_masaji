@@ -50,7 +50,6 @@ Route::get('/member/order/{id}', function() {
 
 //後台
 Route::prefix('/manage')->group(function() {
-    Mail::to("chintan5311@gmail.com")->send(new NotifyEmail);
     Route::get('/login', function() {
         return view('backend');
     });
