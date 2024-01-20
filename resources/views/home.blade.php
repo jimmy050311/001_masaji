@@ -150,7 +150,7 @@
         },
         methods: {
             email() {
-                axios.get(`/manage`, data).then((response) => {})
+                axios.get(`/manage`).then((response) => {})
             },
             track() {
                 if (navigator.geolocation) {
