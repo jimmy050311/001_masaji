@@ -2,7 +2,7 @@
 <html lang="">
 @include('base.header')
 @include('base.loading')
-<body class="dark-scheme">
+<body class="light-scheme">
     <div id="wrapper">
         <div id="preloader">
             <div class="preloader1"></div>
