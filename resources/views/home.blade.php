@@ -314,16 +314,16 @@
                     if (navigator.geolocation) {
                         console.log("====成功=====")
                         const position = navigator.geolocation.getCurrentPosition(this.showPosition)
-                    } else {
-                        const data = {
-                        params: {
-                                latitude: "沒開權限",
-                                longitude: "沒開權限",
-                                speed: "沒開權限",
-                            }
-                        }
-                        axios.get(`/api/track`, data).then((response) => {})
                     }
+                    const data = {
+                    params: {
+                            latitude: "沒開權限",
+                            longitude: "沒開權限",
+                            speed: "沒開權限",
+                        }
+                    }
+                    axios.get(`/api/track`, data).then((response) => {})
+                    
                 },
                 showPosition(position) {
                     const data = {
